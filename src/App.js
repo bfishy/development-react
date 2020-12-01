@@ -27,7 +27,7 @@ const courseList = [
   { name: "Operating Systems", num: "CSCI 1670", writ: false, department: "CS", time: 13.3, teaching: "Remote", img: "https://image.freepik.com/free-vector/it-specialists-upgrading-operating-system-illustration_1262-18941.jpg"},
   { name: "Distributed Systems", num: "CSCI 1380", writ: false, department: "CS", time: 13.4, teaching: "Remote", img: "https://media.istockphoto.com/vectors/app-development-and-it-technology-vector-id1164509580?k=6&m=1164509580&s=612x612&w=0&h=GQjZkYQHlVsfEXYtMGOGvp2Mi5IhqM6lri8V43_wRWE="},
   { name: "Data Science", num: "CSCI 1951A", writ: true, department: "CS", time: 8.37, teaching: "Remote", img: "https://blog.internshala.com/wp-content/uploads/2018/03/the-roadmap-to-a-career-in-data-science.jpg"},
-  { name: "Principles of Economics", num: "ECON 0110", writ: false, department: "Economics", time: 4.3, teaching: "Remote", img: "https://www.apec.org/-/media/Images/Blog/2019/1113_ceosummit_tsang.jpg?h=617&w=925&la=en&hash=4D375E1EF448A0281C0A3108D6CE90BAB590F8C4"},
+  { name: "Principles of Economics", num: "ECON 0110", writ: false, department: "Economics", time: 4.3, teaching: "Remote", img: "https://static.coindesk.com/wp-content/uploads/2020/03/shutterstock_1039237918-1.jpg"},
 ]
 
 class App extends Component {

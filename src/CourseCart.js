@@ -25,7 +25,8 @@ class CourseCart extends Component {
     render() {
         const cart = this.props.list.map(this.createCart)
         // calculate the sum of time committment
-        const sumTime = this.props.list.reduce((acc, curr) => acc + curr.time, 0);
+        let sumTime = this.props.list.reduce((acc, curr) => acc + curr.time, 0);
+        sumTime = (Math.round(sumTime * 100) / 100).toFixed(2);
         return (
             <Container className="my-3">
                 <h3 className="display-5">Course Cart</h3>
