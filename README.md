@@ -36,13 +36,13 @@ When the "Add to Cart" button in items in the `DisplayList` is clicked, it invok
 
 `App.js` also passes a list for the course cart and a `removeFromCart` function to `CourseCart`. `CourseCart` then accesses and renders the course cart from `this.props.list`. When clicking the "Remove" button of an item in the cart, `CourseCart` removes the course by using `removeFromCart`, which modifies the cart list in `App.js`.
 
-### User Interactions
+## User Interactions
 
-#### Select Filter
+### Select Filter
 Selecting a filter changes the state in `FilteredList`, which depends on its state to know what to filter on.
 
-#### Select Sorting Order
+### Select Sorting Order
 Selecting a sorting order changes the state in `FilteredList`, which depends on its state to know in what ordering the list passed on to `DisplayList` should have.
 
-#### Add/Remove Course to/from Cart
+### Add/Remove Course to/from Cart
 Adding and removing courses from the course cart affects the list of courses in cart kept track in the state of `App.js`.
