@@ -13,7 +13,6 @@ class FilteredList extends Component {
             mode: "all",
             writ: "all",
             sort: "Select",
-            cart: [{num: 'CSCI 1300', name: 'UI/UX'}],
         };
     }
 

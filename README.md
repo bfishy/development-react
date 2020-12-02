@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Course Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React web application that helps students explore and navigate their academic schedule.
 
-## Available Scripts
+To see the web app: https://dry-gorge-87869.herokuapp.com/
 
-In the project directory, you can run:
+## Components
 
-### `yarn start`
+This project is comprised of several components:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `App.js`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The main application environment that stores the course list, keeps a state on what courses are in the user's cart, performs the action of adding/removing items from the cart, and renders both the `FilteredList` and the `CourseCart`. 
 
-### `yarn test`
+### `FilteredList.js`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Contains various filter functions on Teaching Mode and WRIT qualifications of courses, as well as a sorting order. It also renders the navigation bar that holds buttons/dropdowns for choosing filters/sorting orders. It then dynamically renders a sorted, filtered `DisplayList` object based on the corresponding filters & sorts selected.
 
-### `yarn build`
+### `DisplayedList.js`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Takes in a list of courses, and renders a list of courses by wrapping each item in the list into a `Card` item. Each card item would contain the course image, course name, course number, department, time committment, WRIT qualification, mode of instruction, and a button that allows users to add that a course to their cart.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `CourseCart.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Takes in a list of "added courses" and renders a list of added courses in a `ListGroup`. Each course in the cart is rendered with the course number, course name, and a button to remove it from the cart. 
 
-### `yarn eject`
+## Data Transfer Between Components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Since most of the components have a parent/child relationship, data is passed between components through `props`. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The data travels both ways: sometimes the parent (`App.js`) passes data to the child (either `FilteredList`, `DisplayList`, or `CourseCart`), and other times the child invokes a function that modifies data in the parent.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`App.js` holds and passes a list of all available courses as well as a `addCourse` function to `FilteredList` as `props`. `FilteredList` then filters and sorts the list, and passes the data to `DisplayList` as `props`. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+When the "Add to Cart" button in items in the `DisplayList` is clicked, it invokes `this.props.addCourse` and passes the course item back to `App.js`, which then adds it to the cart. 
 
-## Learn More
+`App.js` also passes a list for the course cart and a `removeFromCart` function to `CourseCart`. `CourseCart` then accesses and renders the course cart from `this.props.list`. When clicking the "Remove" button of an item in the cart, `CourseCart` removes the course by using `removeFromCart`, which modifies the cart list in `App.js`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### User Interactions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Select Filter
+Selecting a filter changes the state in `FilteredList`, which depends on its state to know what to filter on.
 
-### Code Splitting
+#### Select Sorting Order
+Selecting a sorting order changes the state in `FilteredList`, which depends on its state to know in what ordering the list passed on to `DisplayList` should have.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Add/Remove Course to/from Cart
+Adding and removing courses from the course cart affects the list of courses in cart kept track in the state of `App.js`.

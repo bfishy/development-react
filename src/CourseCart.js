@@ -7,9 +7,7 @@ import Button from 'react-bootstrap/Button'
 class CourseCart extends Component {
     constructor() {
         super();
-        this.state = {
-            totalTime: 0,
-        };
+        this.state = {};
     }
 
     // rendering function for each item in array

@@ -9,10 +9,7 @@ import Button from 'react-bootstrap/Button';
 class DisplayList extends Component {
     constructor() {
         super();
-        this.state = {
-            mode: "All",
-            write: "All",
-        };
+        this.state = {};
     }
 
     // renders a card for each course
